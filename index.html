@@ -3,129 +3,536 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Grounded Pilates</title>
+    <title>The Grounded Pilates - You Were Made to Move</title>
     <style>
+        * {
+            box-sizing: border-box;
+        }
+        
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
+            font-family: 'Tenor Sans', sans-serif;
             background-color: #FCF1E9;
             color: #000001;
+            line-height: 1.6;
         }
+        
+        @import url('https://fonts.googleapis.com/css2?family=Tenor+Sans:wght@400&display=swap');
+        
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 20px 40px;
-            background-color: #FCF1E9;
-            flex-wrap: wrap;
+            background-color: rgba(252, 241, 233, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 20px rgba(143, 143, 116, 0.1);
         }
+        
         .logo {
             display: flex;
             align-items: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #8F8F74;
+            text-decoration: none;
         }
-        .logo img {
-            height: 50px;
-            margin-right: 10px;
+        
+        .logo-image {
+            width: 60px;
+            height: 60px;
+            margin-right: 15px;
+            background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDUwMCA1MDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxjaXJjbGUgY3g9IjI1MCIgY3k9IjI1MCIgcj0iMjAwIiBzdHJva2U9IiM4RjhGNzQiIHN0cm9rZS13aWR0aD0iNCIgZmlsbD0ibm9uZSIvPgo8dGV4dCB4PSIyNTAiIHk9IjIwMCIgZm9udC1mYW1pbHk9Ikdlb3JnaWEiIGZvbnQtc2l6ZT0iNDAiIGZpbGw9IiM4RjhGNzQiIHRleHQtYW5jaG9yPSJtaWRkbGUiPnRoZTwvdGV4dD4KPHRleHQgeD0iMjUwIiB5PSIyNjAiIGZvbnQtZmFtaWx5PSJHZW9yZ2lhIiBmb250LXNpemU9IjM2IiBmaWxsPSIjOEY4Rjc0IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXdlaWdodD0iYm9sZCI+R1JPVU5ERUQ8L3RleHQ+Cjx0ZXh0IHg9IjI1MCIgeT0iMzAwIiBmb250LWZhbWlseT0iR2VvcmdpYSIgZm9udC1zaXplPSIxNiIgZmlsbD0iIzhGOEY3NCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgbGV0dGVyLXNwYWNpbmc9IjNweCIgZm9udC13ZWlnaHQ9IjMwMCI+UElMQVRFUyBTVFVESU88L3RleHQ+Cjx0ZXh0IHg9IjI1MCIgeT0iMzMwIiBmb250LWZhbWlseT0iR2VvcmdpYSIgZm9udC1zaXplPSIxMiIgZmlsbD0iIzhGOEY3NCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgbGV0dGVyLXNwYWNpbmc9IjJweCIgZm9udC13ZWlnaHQ9IjMwMCI+RVNUIDI4MjU8L3RleHQ+Cjwvc3ZnPgo=') center/contain no-repeat;
         }
+        
         nav {
             display: flex;
-            flex-wrap: wrap;
+            gap: 30px;
         }
+        
         nav a {
-            margin-left: 20px;
             text-decoration: none;
             color: #8F8F74;
             font-weight: 500;
+            font-size: 1.1rem;
+            position: relative;
+            transition: color 0.3s ease;
         }
-        nav a:hover {
-            text-decoration: underline;
+        
+        nav a:hover, nav a.active {
+            color: #000001;
         }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #8F8F74;
+            transition: width 0.3s ease;
+        }
+        
+        nav a:hover::after, nav a.active::after {
+            width: 100%;
+        }
+        
         .hero {
             text-align: center;
-            padding: 80px 20px;
+            padding: 120px 20px 80px;
+            background: linear-gradient(135deg, #FCF1E9 0%, #F5E6D3 100%);
+            position: relative;
+            overflow: hidden;
         }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(143, 143, 116, 0.05) 0%, transparent 70%);
+            animation: float 20s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(-20px, -20px) rotate(180deg); }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
         .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
-        .hero p {
-            font-size: 1.1rem;
+            font-size: 3.5rem;
+            margin-bottom: 20px;
             color: #8F8F74;
-            margin-bottom: 30px;
+            font-weight: 300;
+            letter-spacing: -1px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease forwards 0.3s;
         }
+        
+        .hero-tagline {
+            font-size: 1.3rem;
+            color: #000001;
+            margin-bottom: 40px;
+            line-height: 1.8;
+            font-style: italic;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease forwards 0.6s;
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
         .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin-top: 50px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease forwards 0.9s;
+        }
+        
+        .btn {
+            padding: 15px 35px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            border: none;
+            background: none;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #8F8F74, #7A7A62);
+            color: white;
+            box-shadow: 0 8px 25px rgba(143, 143, 116, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(143, 143, 116, 0.4);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: #8F8F74;
+            border: 2px solid #8F8F74;
+        }
+        
+        .btn-secondary:hover {
+            background: #8F8F74;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(143, 143, 116, 0.3);
+        }
+        
+        .section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-white {
+            background: white;
+            margin: 0 -20px;
+            padding: 80px 40px;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            color: #8F8F74;
+            margin-bottom: 20px;
+            font-weight: 300;
+            text-align: center;
+        }
+        
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: #000001;
+            font-style: italic;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .grid {
+            display: grid;
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .grid-2 {
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        }
+        
+        .card {
+            padding: 40px;
+            background: #FCF1E9;
+            border-radius: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 20px rgba(143, 143, 116, 0.1);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(143, 143, 116, 0.15);
+        }
+        
+        .card h3 {
+            color: #8F8F74;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .card p {
+            color: #000001;
+            line-height: 1.7;
+        }
+        
+        .card ul {
+            color: #000001;
+            line-height: 1.8;
+            margin: 20px 0;
+        }
+        
+        .card li {
+            margin-bottom: 8px;
+        }
+        
+        .quote {
+            font-size: 1.3rem;
+            font-style: italic;
+            color: #8F8F74;
+            text-align: center;
+            margin: 40px 0;
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(143, 143, 116, 0.1);
+        }
+        
+        /* Movement section specific styling */
+        .movement-section {
+            background: linear-gradient(135deg, #F5E6D3 0%, #E8D5C4 100%);
+            margin: 80px -20px;
+            padding: 80px 40px;
+        }
+        
+        .movement-benefits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .benefit-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(143, 143, 116, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .benefit-card h4 {
+            color: #8F8F74;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+        
+        .benefit-card p {
+            color: #000001;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        /* Principles section */
+        .principles-section {
+            background: #8F8F74;
+            color: white;
+            margin: 80px -20px;
+            padding: 80px 40px;
+        }
+        
+        .principles-section .section-title,
+        .principles-section .section-subtitle {
+            color: white;
+        }
+        
+        .principles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .principle-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .principle-card h4 {
+            color: white;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .principle-number {
+            background: white;
+            color: #8F8F74;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        
+        .principle-card p {
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+        }
+        
+        /* Call to action section */
+        .cta-section {
+            background: linear-gradient(135deg, #8F8F74, #7A7A62);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+            margin: 80px -20px;
+            border-radius: 0;
+        }
+        
+        .cta-section h3 {
+            color: white;
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+        
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .cta-buttons {
             display: flex;
             justify-content: center;
             gap: 20px;
             flex-wrap: wrap;
         }
-        .buttons a {
-            background-color: #8F8F74;
-            color: white;
-            padding: 12px 24px;
+        
+        .cta-btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background: white;
+            color: #8F8F74;
             text-decoration: none;
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: background-color 0.3s ease;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
         }
-        .buttons a:hover {
-            background-color: #75755D;
+        
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
         }
-
-        /* Responsive tweaks */
+        
+        .cta-btn.secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .cta-btn.secondary:hover {
+            background: white;
+            color: #8F8F74;
+        }
+        
+        /* Responsive Design */
         @media (max-width: 768px) {
             header {
                 flex-direction: column;
-                align-items: flex-start;
+                align-items: center;
+                padding: 20px;
+                gap: 20px;
             }
+            
             nav {
-                margin-top: 10px;
+                gap: 20px;
             }
-            nav a {
-                margin-left: 0;
-                margin-right: 15px;
-            }
-            .hero h1 {
-                font-size: 2rem;
-            }
-            .hero p {
-                font-size: 1rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            header {
-                padding: 15px 20px;
-            }
-            .logo img {
-                height: 40px;
-            }
+            
             .hero {
-                padding: 50px 15px;
+                padding: 80px 15px 60px;
             }
+            
             .hero h1 {
-                font-size: 1.6rem;
+                font-size: 2.5rem;
             }
+            
+            .hero-tagline {
+                font-size: 1.1rem;
+            }
+            
             .buttons {
                 flex-direction: column;
                 align-items: center;
                 gap: 15px;
             }
-            .buttons a {
+            
+            .btn {
                 width: 100%;
+                max-width: 300px;
                 text-align: center;
+            }
+            
+            .section {
+                padding: 60px 15px;
+            }
+            
+            .section-white,
+            .movement-section,
+            .principles-section,
+            .cta-section {
+                margin: 60px -15px;
+                padding: 60px 20px;
+            }
+            
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+            
+            .movement-benefits,
+            .principles-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .cta-btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.2rem;
+            }
+            
+            .logo-image {
+                width: 50px;
+                height: 50px;
+            }
+            
+            nav a {
+                font-size: 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .cta-section h3 {
+                font-size: 1.8rem;
             }
         }
     </style>
 </head>
 <body>
-
     <header>
-        <div class="logo"> 
-            <img src="https://raw.githubusercontent.com/your-username/your-repo/main/path/Copy%20of%20GROUND.png" alt="Ground Image">
+        <a href="#" class="logo">
+            <div class="logo-image"></div>
             <span>The Grounded Pilates</span>
-        </div>
+        </a>
         <nav>
+            <a href="#" class="active">Home</a>
             <a href="#">Home</a>
             <a href="#">Resources</a>
             <a href="#">Classes</a>
@@ -134,16 +541,119 @@
     </header>
 
     <section class="hero">
-        <h1>Welcome to The Grounded Pilates!</h1>
-        <p> Discover strength.
-Discover connection.
-Discover yourself.
-</p>
-        <div class="buttons">
-            <a href="#">Join a Class</a>
-            <a href="#">Learn More</a>
+        <div class="hero-content">
+            <h1>You Were Made to Move</h1>
+            <p class="hero-tagline">
+                Discover strength.<br>
+                Discover connection.<br>
+                Discover yourself.
+            </p>
+            <div class="buttons">
+                <a href="classes.html" class="btn btn-primary">Join a Class</a>
+                <a href="about.html" class="btn btn-secondary">Learn More</a>
+            </div>
         </div>
     </section>
 
+    <section class="section section-white">
+        <h2 class="section-title">You're Not Broken</h2>
+        <p class="section-subtitle">If you struggle to start or stick with movement, it doesn't mean you're lazy. It means you're human!</p>
+        
+        <div class="quote">
+            "Movement was always yours. Pilates helps you find your way back!"
+        </div>
+
+        <div class="grid grid-2">
+            <div class="card">
+                <h3>Why Movement Feels Hard</h3>
+                <ul>
+                    <li><strong>Past movement was linked to punishment</strong> - Your nervous system remembers and may be trying to protect you</li>
+                    <li><strong>Identity gap</strong> - You don't see yourself as "a workout person"</li>
+                    <li><strong>You're exhausted or overwhelmed</strong> - Motivation fades when core needs like autonomy are missing</li>
+                    <li><strong>You doubt it'll help</strong> - We take action when we believe something matters and feels doable</li>
+                    <li><strong>Your environment doesn't support you</strong> - Spaces and schedules matter</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3>The Grounded Difference</h3>
+                <p>You don't need to change who you are. You need a way back in. Pilates can help you rewrite your story. Not by forcing movement, but by reintroducing something supportive, enjoyable, and yours.</p>
+                <p>At The Grounded, we specialize in helping people who feel disconnected from movement. Pilates was created for people rebuilding strength after illness, injury, or long periods of inactivity.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="movement-section">
+        <h2 class="section-title">Movement Matters</h2>
+        <p class="section-subtitle">Your body was made to move! Not as punishment, but as a way to feel alive, strong, and connected.</p>
+        
+        <div class="movement-benefits">
+            <div class="benefit-card">
+                <h4>Physical Strength</h4>
+                <p>Maintain muscle mass and improve balance to prevent falls and injuries as we age</p>
+            </div>
+            
+            <div class="benefit-card">
+                <h4>Nervous System</h4>
+                <p>Rewire your brain with purposeful tasks and regulate your mood</p>
+            </div>
+            
+            <div class="benefit-card">
+                <h4>Cognitive Function</h4>
+                <p>Boost memory, focus, and overall mental clarity through movement</p>
+            </div>
+            
+            <div class="benefit-card">
+                <h4>Energy & Vitality</h4>
+                <p>Increase overall energy and feel more alive in your daily life</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="principles-section">
+        <h2 class="section-title">The Six Core Principles</h2>
+        <p class="section-subtitle">At The Grounded we focus on principles that directly support those returning to movement</p>
+        
+        <div class="principles-grid">
+            <div class="principle-card">
+                <h4><span class="principle-number">1</span>Breath</h4>
+                <p>Help you regulate your nervous system and increase awareness</p>
+            </div>
+            
+            <div class="principle-card">
+                <h4><span class="principle-number">2</span>Concentration</h4>
+                <p>Engaging and mindful movement that connects mind and body</p>
+            </div>
+            
+            <div class="principle-card">
+                <h4><span class="principle-number">3</span>Control</h4>
+                <p>Build safety and consistency in your movement practice</p>
+            </div>
+            
+            <div class="principle-card">
+                <h4><span class="principle-number">4</span>Centering</h4>
+                <p>Strengthen deep core support, physically and emotionally</p>
+            </div>
+            
+            <div class="principle-card">
+                <h4><span class="principle-number">5</span>Precision</h4>
+                <p>Focus on quality over quantity for sustainable progress</p>
+            </div>
+            
+            <div class="principle-card">
+                <h4><span class="principle-number">6</span>Flow</h4>
+                <p>Create coordinated and satisfying movement patterns</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <h3>Ready to Begin Your Journey?</h3>
+        <p>This is not a workout built on punishment or perfection. It's a practice of reconnection, one that respects where you are now and builds from there.</p>
+        <div class="cta-buttons">
+            <a href="classes.html" class="cta-btn">Explore Classes</a>
+            <a href="contact.html" class="cta-btn secondary">Get in Touch</a>
+        </div>
+    </section>
 </body>
 </html>

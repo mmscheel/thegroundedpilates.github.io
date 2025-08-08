@@ -1,0 +1,279 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classes - The Grounded Pilates</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            margin: 0;
+            font-family: 'Tenor Sans', sans-serif;
+            background-color: #FCF1E9;
+            color: #000001;
+            line-height: 1.6;
+        }
+        
+        @import url('https://fonts.googleapis.com/css2?family=Tenor+Sans:wght@400&display=swap');
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background-color: rgba(252, 241, 233, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(143, 143, 116, 0.1);
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #8F8F74;
+            text-decoration: none;
+        }
+        
+        .logo-image {
+            width: 60px;
+            height: 60px;
+            margin-right: 15px;
+            background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDUwMCA1MDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxjaXJjbGUgY3g9IjI1MCIgY3k9IjI1MCIgcj0iMjAwIiBzdHJva2U9IiM4RjhGNzQiIHN0cm9rZS13aWR0aD0iNCIgZmlsbD0ibm9uZSIvPgo8dGV4dCB4PSIyNTAiIHk9IjIwMCIgZm9udC1mYW1pbHk9Ikdlb3JnaWEiIGZvbnQtc2l6ZT0iNDAiIGZpbGw9IiM4RjhGNzQiIHRleHQtYW5jaG9yPSJtaWRkbGUiPnRoZTwvdGV4dD4KPHRleHQgeD0iMjUwIiB5PSIyNjAiIGZvbnQtZmFtaWx5PSJHZW9yZ2lhIiBmb250LXNpemU9IjM2IiBmaWxsPSIjOEY4Rjc0IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXdlaWdodD0iYm9sZCI+R1JPVU5ERUQ8L3RleHQ+Cjx0ZXh0IHg9IjI1MCIgeT0iMzAwIiBmb250LWZhbWlseT0iR2VvcmdpYSIgZm9udC1zaXplPSIxNiIgZmlsbD0iIzhGOEY3NCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgbGV0dGVyLXNwYWNpbmc9IjNweCIgZm9udC13ZWlnaHQ9IjMwMCI+UElMQVRFUyBTVFVESU88L3RleHQ+Cjx0ZXh0IHg9IjI1MCIgeT0iMzMwIiBmb250LWZhbWlseT0iR2VvcmdpYSIgZm9udC1zaXplPSIxMiIgZmlsbD0iIzhGOEY3NCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgbGV0dGVyLXNwYWNpbmc9IjJweCIgZm9udC13ZWlnaHQ9IjMwMCI+RVNUIDI4MjU8L3RleHQ+Cjwvc3ZnPgo=') center/contain no-repeat;
+        }
+        
+        nav {
+            display: flex;
+            gap: 30px;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: #8F8F74;
+            font-weight: 500;
+            font-size: 1.1rem;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        
+        nav a:hover, nav a.active {
+            color: #000001;
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #8F8F74;
+            transition: width 0.3s ease;
+        }
+        
+        nav a:hover::after, nav a.active::after {
+            width: 100%;
+        }
+        
+        .section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            color: #8F8F74;
+            margin-bottom: 20px;
+            font-weight: 300;
+            text-align: center;
+        }
+        
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: #000001;
+            font-style: italic;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .grid {
+            display: grid;
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .grid-3 {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+        
+        .card {
+            padding: 40px;
+            background: white;
+            border-radius: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 20px rgba(143, 143, 116, 0.1);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(143, 143, 116, 0.15);
+        }
+        
+        .card h3 {
+            color: #8F8F74;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .card p {
+            color: #000001;
+            line-height: 1.7;
+        }
+        
+        .quote {
+            font-size: 1.3rem;
+            font-style: italic;
+            color: #8F8F74;
+            text-align: center;
+            margin: 40px 0;
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(143, 143, 116, 0.1);
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, #8F8F74, #7A7A62);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+            margin: 60px 0;
+            border-radius: 20px;
+        }
+        
+        .cta-section h3 {
+            color: white;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 15px 35px;
+            background: white;
+            color: #8F8F74;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: center;
+                padding: 20px;
+                gap: 20px;
+            }
+            
+            nav {
+                gap: 20px;
+            }
+            
+            .section {
+                padding: 60px 15px;
+            }
+            
+            .grid-3 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.2rem;
+            }
+            
+            .logo-image {
+                width: 50px;
+                height: 50px;
+            }
+            
+            nav a {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="../" class="logo">
+            <div class="logo-image"></div>
+            <span>The Grounded Pilates</span>
+        </a>
+        <nav>
+            <a href="../">Home</a>
+            <a href="../about/">About</a>
+            <a href="../classes/" class="active">Classes</a>
+            <a href="../resources/">Resources</a>
+            <a href="../contact/">Contact</a>
+        </nav>
+    </header>
+
+    <section class="section">
+        <h1 class="section-title">Our Classes</h1>
+        <p class="section-subtitle">Pilates helps you build the capacity to move again. To reclaim the freedom to play, explore, and feel like yourself again.</p>
+        
+        <div class="grid grid-3">
+            <div class="card">
+                <h3>Beginner Classes</h3>
+                <p>Perfect for those new to Pilates or returning to movement after a break. We focus on foundational movements, breath work, and building confidence in your body's capabilities.</p>
+            </div>
+            
+            <div class="card">
+                <h3>Restorative Pilates</h3>
+                <p>Gentle, supported movements designed for those recovering from injury or dealing with chronic conditions. Emphasis on nervous system regulation and gentle strengthening.</p>
+            </div>
+            
+            <div class="card">
+                <h3>Mindful Movement</h3>
+                <p>A slower-paced class that combines Pilates principles with mindfulness practices. Focus on the mind-body connection and moving with intention.</p>
+            </div>
+        </div>
+
+        <div class="quote">
+            "You deserve to move in ways that feel good, in ways that build confidence and joy. You deserve to feel like yourself again!"
+        </div>
+
+        <div class="cta-section">
+            <h3>Ready to Start Your Journey?</h3>
+            <p>Join us for a class and discover how Pilates can help you reconnect with movement</p>
+            <a href="../contact/" class="btn">Contact Us Today</a>
+        </div>
+    </section>
+</body>
+</html>
